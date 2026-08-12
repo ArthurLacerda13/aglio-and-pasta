@@ -4,7 +4,7 @@
   <p><b>Fine Italian Dining & Modern Web Experience</b></p>
   <p><i>Un'esperienza culinaria autentica e moderna.</i></p>
 
-  [![Demo](https://img.shields.io/badge/Live_Demo-aglio--and--pasta.vercel.app-gold?style=for-the-badge&logo=vercel)](https://aglio-and-pasta.vercel.app)
+  [![Demo](https://img.shields.io/badge/Live_Demo-aglio--and--pasta--beta.vercel.app-gold?style=for-the-badge&logo=vercel)](https://aglio-and-pasta-beta.vercel.app)
   [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
   [![i18n](https://img.shields.io/badge/i18n-PT_%7C_EN_%7C_IT-orange?style=for-the-badge)](#-idiomas--languages--lingue)
@@ -131,7 +131,7 @@ O **Aglio & Pasta** é uma aplicação web moderna e elegante projetada para um 
 
 ## 🔗 Live Demo
 
-🔗 **Acesse a versão online:** [aglio-and-pasta.vercel.app](https://aglio-and-pasta.vercel.app)
+🔗 **Acessar a versão online:** [aglio-and-pasta-beta.vercel.app](https://aglio-and-pasta-beta.vercel.app)
 
 ---
 
