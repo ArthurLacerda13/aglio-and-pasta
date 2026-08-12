@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us & Reservations - Aglio & Pasta</title>
+  <meta name="description" content="Learn about our Italian culinary tradition and reserve your table at Aglio & Pasta restaurant." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <script type="module" src="/src/navbar.js"></script>
+  <script type="module" src="/src/about-page.js"></script>
+  <script type="module" src="/src/filter.js"></script>
+</head>
+
+<body class="bg-[#0f0f11] text-gray-100 font-inter min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+  <!-- Sticky Header Navigation -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0f0f11]/80 backdrop-blur-md border-b border-amber-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="../index.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+              <i class="fa-solid fa-utensils text-black text-lg"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-playfair text-2xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors duration-300">
+                Aglio & Pasta
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-amber-500 font-medium">Cucina Italiana</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="../index.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_home">Home</a>
+          <a href="./categories.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_categories">Categories</a>
+          <a href="./products.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_products">Full Menu</a>
+          <a href="./about.html" class="nav-link active text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_about">About & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(255,255,255,0.08);" title="Switch theme" aria-label="Switch theme">
+            <i class="fa-solid fa-sun theme-toggle-icon text-amber-400 hover:text-amber-300 transition-colors text-base"></i>
+          </button>
+          <div class="relative hidden md:block">
+            <button id="lang-dropdown-toggle" class="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold transition-all duration-300 hover:scale-105" style="background: rgba(255,255,255,0.08); color: #d1d5db;">
+              <span id="current-lang-label">🇧🇷 PT</span>
+              <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+            </button>
+            <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 rounded-xl shadow-2xl border border-amber-900/40 overflow-hidden z-50" style="background: #1a191d;">
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="pt">🇧🇷 Português</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="en">🇺🇸 English</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="it">🇮🇹 Italiano</button>
+            </div>
+          </div>
+          <a href="#reservation" class="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black shadow-lg shadow-amber-900/20 transition-all duration-300 hover:scale-105" data-i18n="nav_book_table">Book Table</a>
+          <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400 focus:outline-none p-2" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#161519] border-b border-amber-900/30 px-4 pt-2 pb-6 space-y-3">
+      <a href="../index.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_home">Home</a>
+      <a href="./categories.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_categories">Categories</a>
+      <a href="./products.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_products">Full Menu</a>
+      <a href="./about.html" class="block text-amber-400 py-2 text-base font-medium" data-i18n="nav_about">About & Contact</a>
+      <div class="flex items-center gap-2 mt-2 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08);">
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="pt">🇧🇷 PT</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="en">🇺🇸 EN</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="it">🇮🇹 IT</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen lg:h-screen flex items-center pt-24 pb-8 lg:pt-20 lg:pb-0 overflow-hidden bg-gradient-to-b from-[#18171c] to-[#0f0f11]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold mb-2 block">
+            Our Heritage & Story
+          </span>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-white mb-3 lg:mb-4 leading-tight">
+            Passionate About Authentic <span class="gold-gradient-text italic font-serif">Italian Cuisine</span>
+          </h1>
+          <p class="text-gray-300 text-sm lg:text-base leading-relaxed mb-3 font-cormorant text-lg lg:text-xl italic">
+            "Every dish we serve is a homage to nonna's kitchen in Bologna—hand-rolled pasta, fragrant basil, extra virgin olive oil, and time-honored family secrets passed down through generations."
+          </p>
+          <p class="text-gray-400 text-xs lg:text-sm leading-relaxed mb-5 lg:mb-6">
+            Founded with a singular vision to bring true Italian warmth and gastronomic perfection to your table, Aglio & Pasta combines artisanal technique with top-tier DOC certified ingredients imported directly from Italy.
+          </p>
+
+          <div class="grid grid-cols-3 gap-4 lg:gap-6 text-center border-t border-amber-900/30 pt-4 lg:pt-6">
+            <div>
+              <span class="font-playfair text-2xl lg:text-3xl font-bold text-amber-300 block">25+</span>
+              <span class="text-[10px] uppercase text-gray-400 tracking-wider">Years Tradition</span>
+            </div>
+            <div>
+              <span class="font-playfair text-2xl lg:text-3xl font-bold text-amber-300 block">100%</span>
+              <span class="text-[10px] uppercase text-gray-400 tracking-wider">Fresh Pasta</span>
+            </div>
+            <div>
+              <span class="font-playfair text-2xl lg:text-3xl font-bold text-amber-300 block">4.9★</span>
+              <span class="text-[10px] uppercase text-gray-400 tracking-wider">Guest Rating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-900/30 group max-w-lg mx-auto lg:max-w-none">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" alt="Chef preparing pasta" class="w-full h-[260px] sm:h-[320px] lg:h-[380px] xl:h-[420px] max-h-[46vh] object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0f0f11] via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Section -->
+  <section id="reservation" class="relative min-h-screen lg:h-screen flex flex-col justify-center pt-24 pb-8 lg:pt-20 lg:pb-6 bg-[#141317] border-y border-amber-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="text-center max-w-2xl mx-auto mb-4 lg:mb-6">
+        <span class="text-[11px] uppercase tracking-widest text-amber-400 font-semibold mb-1 block">Reserve Your Experience</span>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-white mb-1.5">Book a Table</h2>
+        <p class="text-gray-400 text-xs md:text-sm">Experience an unforgettable evening of traditional Italian fine dining.</p>
+      </div>
+
+      <div class="max-w-3xl mx-auto bg-[#1a191e] border border-amber-900/30 rounded-2xl p-5 md:p-7 lg:p-8 shadow-2xl relative w-full">
+        <form id="reservation-form" class="space-y-3.5 lg:space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 md:gap-4">
+            <div>
+              <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Full Name *</label>
+              <input type="text" required placeholder="Giovanni Rossi" class="w-full py-2.5 px-3.5 text-xs bg-white/5 text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+            </div>
+
+            <div>
+              <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Email Address *</label>
+              <input type="email" required placeholder="giovanni@example.com" class="w-full py-2.5 px-3.5 text-xs bg-white/5 text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 md:gap-4">
+            <div>
+              <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Date *</label>
+              <input type="date" required class="w-full py-2.5 px-3.5 text-xs bg-white/5 text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+            </div>
+
+            <div>
+              <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Time Slot *</label>
+              <select required class="w-full py-2.5 px-3.5 text-xs bg-[#1f1e24] text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                <option value="12:30">12:30 PM (Lunch)</option>
+                <option value="13:30">01:30 PM (Lunch)</option>
+                <option value="19:00" selected>07:00 PM (Dinner)</option>
+                <option value="20:30">08:30 PM (Dinner)</option>
+                <option value="21:30">09:30 PM (Dinner)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Guests *</label>
+              <select required class="w-full py-2.5 px-3.5 text-xs bg-[#1f1e24] text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="8+">8+ Large Party</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[10px] md:text-[11px] uppercase font-semibold tracking-wider text-amber-300 mb-1">Seating Preference & Special Requests</label>
+            <textarea rows="2" placeholder="Patio table, anniversary celebration, dietary preferences..." class="w-full py-2 px-3.5 text-xs bg-white/5 text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
+          </div>
+
+          <div class="text-center pt-2">
+            <button type="submit" class="w-full sm:w-auto px-10 py-3 rounded-full text-xs uppercase font-bold tracking-widest bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black shadow-lg shadow-amber-900/30 transition-all duration-300 hover:scale-105 cursor-pointer">
+              Confirm Reservation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Hours Section -->
+  <section class="py-16 md:py-20 bg-[#0f0f11]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="bg-[#161519] border border-amber-900/20 p-8 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl mb-4">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <h3 class="font-playfair text-2xl font-bold text-white mb-2">Our Location</h3>
+            <p class="text-gray-400 text-xs leading-relaxed mb-4">
+              Via Della Spiga 18, Milan / SP, Brazil<br>
+              Heart of the Fine Dining District
+            </p>
+          </div>
+          <span class="text-xs font-semibold text-amber-400">Valet Parking Available</span>
+        </div>
+
+        <div class="bg-[#161519] border border-amber-900/20 p-8 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl mb-4">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <h3 class="font-playfair text-2xl font-bold text-white mb-2">Hours of Service</h3>
+            <p class="text-gray-400 text-xs leading-relaxed mb-1">Mon – Thu: 12:00 PM – 10:30 PM</p>
+            <p class="text-gray-400 text-xs leading-relaxed mb-1">Fri – Sat: 12:00 PM – 11:30 PM</p>
+            <p class="text-gray-400 text-xs leading-relaxed">Sunday: 12:00 PM – 09:30 PM</p>
+          </div>
+          <span class="text-xs font-semibold text-amber-400">Kitchen Closes 45m Before Closing</span>
+        </div>
+
+        <div class="bg-[#161519] border border-amber-900/20 p-8 rounded-2xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl mb-4">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h3 class="font-playfair text-2xl font-bold text-white mb-2">Contact & Inquiries</h3>
+            <p class="text-gray-400 text-xs leading-relaxed mb-1">Phone: +55 (11) 98765-4321</p>
+            <p class="text-gray-400 text-xs leading-relaxed mb-4">Email: contatto@aglioepasta.com</p>
+          </div>
+          <span class="text-xs font-semibold text-amber-400">Private Events & Catering Available</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Success Modal -->
+  <div id="reservation-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-[#161519] border border-amber-900/40 rounded-3xl p-8 max-w-md w-full text-center shadow-2xl relative">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-amber-500 to-amber-400 text-black flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h3 class="font-playfair text-2xl font-bold text-white mb-2">Reservation Received!</h3>
+      <p class="text-xs text-gray-300 leading-relaxed mb-6">
+        Grazie mille! We have received your table reservation request and sent a confirmation summary to your email.
+      </p>
+      <button id="close-res-modal" class="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500 text-black hover:bg-amber-400 transition-colors">
+        Back to Website
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#09080a] border-t border-amber-900/30 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-black">
+              <i class="fa-solid fa-utensils text-sm"></i>
+            </div>
+            <span class="font-playfair text-2xl font-bold text-white">Aglio & Pasta</span>
+          </div>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md font-cormorant italic text-lg" data-i18n="footer_brand_quote">
+            "La cucina italiana non è solo cibo, è un modo di vivere. Ogni piatto racconta una storia di passione e tradizione."
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_explore">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="../index.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_home">Home</a></li>
+            <li><a href="./categories.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_categories">Categories</a></li>
+            <li><a href="./products.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_products">Full Menu</a></li>
+            <li><a href="./about.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_about">About Us & Reservations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_opening_hours">Opening Hours</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Mon - Thu: 12:00 - 22:30</li>
+            <li>Fri - Sat: 12:00 - 23:30</li>
+            <li>Sunday: 12:00 - 21:30</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-amber-900/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p data-i18n="footer_copyright">© 2026 Aglio & Pasta. All rights reserved. Crafted with Italian Passion.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-x-twitter text-base"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

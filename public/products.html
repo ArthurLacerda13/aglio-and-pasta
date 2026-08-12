@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Menu & Products - Aglio & Pasta</title>
+  <meta name="description" content="Discover our complete Italian menu featuring handcrafted pastas, wood-fired pizzas, creamy risottos, and Italian wines." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <script type="module" src="/src/navbar.js"></script>
+  <script type="module" src="/src/products-page.js"></script>
+  <script type="module" src="/src/filter.js"></script>
+</head>
+
+<body class="bg-[#0f0f11] text-gray-100 font-inter min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+  <!-- Sticky Header Navigation -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0f0f11]/80 backdrop-blur-md border-b border-amber-900/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="../index.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+              <i class="fa-solid fa-utensils text-black text-lg"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-playfair text-2xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors duration-300">
+                Aglio & Pasta
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-amber-500 font-medium">Cucina Italiana</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="../index.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_home">Home</a>
+          <a href="./categories.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_categories">Categories</a>
+          <a href="./products.html" class="nav-link active text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_products">Full Menu</a>
+          <a href="./about.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_about">About & Contact</a>
+        </nav>
+
+        <div class="flex items-center space-x-3">
+          <button class="theme-toggle-btn w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(255,255,255,0.08);" title="Switch theme" aria-label="Switch theme">
+            <i class="fa-solid fa-sun theme-toggle-icon text-amber-400 hover:text-amber-300 transition-colors text-base"></i>
+          </button>
+          <div class="relative hidden md:block">
+            <button id="lang-dropdown-toggle" class="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold transition-all duration-300 hover:scale-105" style="background: rgba(255,255,255,0.08); color: #d1d5db;">
+              <span id="current-lang-label">🇧🇷 PT</span>
+              <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+            </button>
+            <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 rounded-xl shadow-2xl border border-amber-900/40 overflow-hidden z-50" style="background: #1a191d;">
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="pt">🇧🇷 Português</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="en">🇺🇸 English</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="it">🇮🇹 Italiano</button>
+            </div>
+          </div>
+          <a href="./about.html#reservation" class="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black shadow-lg shadow-amber-900/20 transition-all duration-300 hover:scale-105" data-i18n="nav_book_table">Book Table</a>
+          <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400 focus:outline-none p-2" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#161519] border-b border-amber-900/30 px-4 pt-2 pb-6 space-y-3">
+      <a href="../index.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_home">Home</a>
+      <a href="./categories.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_categories">Categories</a>
+      <a href="./products.html" class="block text-amber-400 py-2 text-base font-medium" data-i18n="nav_products">Full Menu</a>
+      <a href="./about.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_about">About & Contact</a>
+      <div class="flex items-center gap-2 mt-2 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08);">
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="pt">🇧🇷 PT</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="en">🇺🇸 EN</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="it">🇮🇹 IT</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="relative pt-36 pb-16 bg-gradient-to-b from-[#18171c] to-[#0f0f11]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold mb-3 block">
+        Il Nostro Menu
+      </span>
+      <h1 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-4">
+        Our Artisanal <span class="gold-gradient-text italic font-serif">Menu</span>
+      </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+        Freshly prepared daily with DOC-certified Italian ingredients, extra virgin olive oil, and decades of passion.
+      </p>
+    </div>
+  </section>
+
+  <!-- Catalog Controls (Filters & Sorting) -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 flex-grow">
+    
+    <div class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 bg-[#161519] p-6 rounded-2xl border border-amber-900/20 shadow-xl">
+      <!-- Category Pills -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="category-filters">
+        <button data-cat="all" class="cat-pill active px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-gradient-to-r from-amber-500 to-amber-600 text-black shadow-md">
+          All Dishes
+        </button>
+        <button data-cat="Pasta" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Pasta
+        </button>
+        <button data-cat="Pizzas" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Pizzas
+        </button>
+        <button data-cat="Risotto" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Risotto
+        </button>
+        <button data-cat="Antipasti" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Antipasti
+        </button>
+        <button data-cat="Desserts" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Desserts
+        </button>
+        <button data-cat="Wines" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white border border-amber-900/30">
+          Wines
+        </button>
+      </div>
+
+      <!-- Sorting Selector & Filter Search -->
+      <div class="flex items-center space-x-4 justify-between md:justify-end">
+        <div class="relative w-full md:w-48">
+          <input type="text" id="menu-search" placeholder="Filter dishes..." class="w-full py-2 pl-8 pr-4 text-xs bg-white/5 text-gray-200 border border-amber-900/30 rounded-xl focus:outline-none focus:border-amber-500/60 placeholder-gray-500">
+          <i class="fa-solid fa-filter absolute left-2.5 top-2.5 text-xs text-amber-500/70"></i>
+        </div>
+
+        <select id="sort-select" class="py-2 px-3 text-xs bg-[#1f1e24] text-gray-200 border border-amber-900/40 rounded-xl focus:outline-none focus:border-amber-500/60 font-medium">
+          <option value="default">Sort by: Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Highest Rated</option>
+          <option value="name-asc">Name: A - Z</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Injected by products-page.js -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-products-msg" class="hidden text-center py-20 bg-[#161519] rounded-2xl border border-amber-900/20">
+      <i class="fa-solid fa-plate-wheat text-4xl text-amber-500/40 mb-4 block"></i>
+      <h3 class="font-playfair text-2xl font-bold text-white mb-2">No Dishes Found</h3>
+      <p class="text-sm text-gray-400 max-w-md mx-auto mb-6">We couldn't find any items matching your selected filters or search query.</p>
+      <button id="reset-filters-btn" class="px-6 py-2.5 rounded-full text-xs font-semibold bg-amber-500 text-black hover:bg-amber-400 transition-colors">
+        Reset All Filters
+      </button>
+    </div>
+  </main>
+
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity duration-300">
+    <div class="bg-[#161519] border border-amber-900/40 rounded-3xl overflow-hidden max-w-2xl w-full shadow-2xl relative transform transition-transform duration-300 scale-95" id="modal-content">
+      <button id="close-modal-btn" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 text-white hover:text-amber-400 flex items-center justify-center border border-white/10 transition-colors">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="h-64 md:h-full relative overflow-hidden">
+          <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161519] via-transparent to-transparent md:hidden"></div>
+        </div>
+
+        <div class="p-6 md:p-8 flex flex-col justify-between">
+          <div>
+            <span id="modal-category" class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 block">Category</span>
+            <h2 id="modal-title" class="font-playfair text-2xl font-bold text-white mb-3">Product Name</h2>
+            <div id="modal-rating" class="flex items-center space-x-1 mb-4 text-amber-400 text-xs"></div>
+            <p id="modal-desc" class="text-gray-300 text-xs leading-relaxed mb-6">Product description goes here...</p>
+          </div>
+
+          <div class="border-t border-amber-900/30 pt-6 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] uppercase tracking-widest text-gray-500 block">Price</span>
+              <span id="modal-price" class="font-playfair text-2xl font-bold text-amber-300">R$ 0.00</span>
+            </div>
+            <button id="modal-order-btn" class="px-6 py-3 rounded-full text-xs font-semibold bg-gradient-to-r from-amber-600 to-amber-500 text-black shadow-lg hover:from-amber-500 hover:to-amber-400 transition-all duration-300">
+              Add to Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-gradient-to-r from-amber-600 to-amber-500 text-black px-6 py-3 rounded-2xl shadow-2xl font-semibold text-xs flex items-center space-x-3 transition-all duration-300">
+    <i class="fa-solid fa-circle-check text-lg"></i>
+    <span id="toast-text">Item added to order!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#09080a] border-t border-amber-900/30 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-black">
+              <i class="fa-solid fa-utensils text-sm"></i>
+            </div>
+            <span class="font-playfair text-2xl font-bold text-white">Aglio & Pasta</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md font-cormorant italic text-lg">
+            "La cucina italiana non è solo cibo, è un modo di vivere. Ogni piatto racconta una storia di passione e tradizione."
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_explore">Quick Links</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="../index.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_home">Home</a></li>
+            <li><a href="./categories.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_categories">Categories</a></li>
+            <li><a href="./products.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_products">Full Menu</a></li>
+            <li><a href="./about.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_about">About Us & Reservations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_opening_hours">Opening Hours</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Mon - Thu: 12:00 - 22:30</li>
+            <li>Fri - Sat: 12:00 - 23:30</li>
+            <li>Sunday: 12:00 - 21:30</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-amber-900/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p data-i18n="footer_copyright">© 2026 Aglio & Pasta. All rights reserved. Crafted with Italian Passion.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-x-twitter text-base"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

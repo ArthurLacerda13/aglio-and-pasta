@@ -2,54 +2,55 @@ import tabela from "./data/favorites-massas";
 
 document.addEventListener("DOMContentLoaded", function () {
   const principal = document.querySelector("#collections");
-
-  if (!principal) {
-    console.error("Elemento #collections não encontrado");
-    return;
-  }
+  if (!principal) return;
 
   const gridContainer = principal.querySelector(".grid");
-
-  if (!gridContainer) {
-    console.error("Container grid não encontrado");
-    return;
-  }
+  if (!gridContainer) return;
 
   gridContainer.innerHTML = "";
-  let itemsParaMostrar;
+  const itemsParaMostrar = tabela.slice(0, 4);
 
-  if (tabela.length >= 8) {
-    itemsParaMostrar = tabela.slice(0, 8);
-  } else {
-    itemsParaMostrar = tabela.slice(0, Math.min(4, tabela.length));
-  }
+  itemsParaMostrar.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "collection-card h-80 relative group cursor-pointer";
+    card.setAttribute("data-aos", "fade-up");
+    card.setAttribute("data-aos-duration", "600");
+    card.setAttribute("data-aos-delay", `${index * 100}`);
 
-  console.log(`Total de itens disponíveis: ${tabela.length}`);
-  console.log(`Itens que serão exibidos: ${itemsParaMostrar.length}`);
-
-  itemsParaMostrar.forEach(
-    (item) =>
-      (gridContainer.innerHTML += `
-    <div class="relative h-64 rounded-lg overflow-hidden group shadow-lg hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-duration="1500" data-aos-anchor-placement="top-bottom">
+    card.innerHTML = `
       <img
         src="${item.imagePath}"
-        alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+        alt="${item.name}" 
+        class="w-full h-full object-cover"
+        loading="lazy"
       />
 
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+      <div class="collection-overlay absolute inset-0"></div>
 
-      <div class="absolute inset-0 flex items-end p-6">
-        <div class="transform transition-transform duration-300 ease-in-out group-hover:-translate-y-2">
-          <h3 class="text-white text-xl font-bold mb-2">
+      <div class="absolute inset-0 flex flex-col justify-end p-6 text-white">
+        <div class="transform transition-transform duration-300 ease-out group-hover:-translate-y-2">
+          <span class="text-xs uppercase font-semibold tracking-wider text-amber-300 mb-1 block">
+            ${item.category}
+          </span>
+          <h3 class="font-playfair text-xl font-bold mb-1">
             ${item.name}
           </h3>
-          <button
-            class="bg-white text-black px-4 py-1 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            Details
-          </button>
+          <p class="text-xs opacity-80 line-clamp-2 mb-3 leading-relaxed">
+            ${item.description}
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="font-playfair text-lg font-bold text-amber-200">
+              R$ ${item.price.toFixed(2)}
+            </span>
+            <a href="public/products.html"
+              class="px-4 py-1.5 rounded-full text-xs font-semibold bg-amber-500 text-black transition-all duration-300 group-hover:bg-amber-400">
+              View Details
+            </a>
+          </div>
         </div>
       </div>
-    </div>`)
-  );
+    `;
+
+    gridContainer.appendChild(card);
+  });
 });

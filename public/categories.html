@@ -1,316 +1,186 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aglio & Pasta - Categories</title>
+  <title>Categories - Aglio & Pasta | Traditional Italian Cuisine</title>
+  <meta name="description" content="Explore our artisanal Italian food categories from fresh handcrafted pasta to authentic Neapolitan pizza and fine Tuscan wines." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/src/style.css" />
-  <script type="module" src="/src/categories-home.js"></script>
+
+  <script type="module" src="/src/navbar.js"></script>
+  <script type="module" src="/src/categories.js"></script>
   <script type="module" src="/src/filter.js"></script>
 </head>
 
-<body class="bg-gray-50 font-inter">
-  <!-- Header -->
-  <header class="bg-white shadow-md border-b border-gray-200 sticky top-0 z-20">
+<body class="bg-[#0f0f11] text-gray-100 font-inter min-h-screen flex flex-col selection:bg-amber-500 selection:text-black">
+  <!-- Sticky Header Navigation -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0f0f11]/80 backdrop-blur-md border-b border-amber-900/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
+      <div class="flex justify-between items-center h-20">
 
+        <!-- Logo -->
         <div class="flex-shrink-0">
-          <a href="../index.html" class="flex items-center space-x-2">
-            <h1
-              class="text-2xl font-playfair font-bold text-gray-800 hover:text-amber-600 transition-colors duration-300">
-              Aglio & Pasta
-            </h1>
+          <a href="../index.html" class="flex items-center space-x-3 group">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+              <i class="fa-solid fa-utensils text-black text-lg"></i>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-playfair text-2xl font-bold tracking-tight text-white group-hover:text-amber-400 transition-colors duration-300">
+                Aglio & Pasta
+              </span>
+              <span class="text-[10px] uppercase tracking-widest text-amber-500 font-medium">Cucina Italiana</span>
+            </div>
           </a>
         </div>
 
+        <!-- Desktop Navigation Links -->
         <nav class="hidden md:flex items-center space-x-8">
-          <a href="../index.html"
-            class="text-gray-600 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group">
-            <span>Homepage</span>
-            <span
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+          <a href="../index.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_home">
+            Home
           </a>
-          <a href="#"
-            class="text-gray-600 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group">
-            <span>Categories</span>
-            <span
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+          <a href="./categories.html" class="nav-link active text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_categories">
+            Categories
           </a>
-          <a href="#"
-            class="text-gray-600 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group">
-            <span>Products</span>
-            <span
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+          <a href="./products.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_products">
+            Full Menu
           </a>
-          <a href="#"
-            class="text-gray-600 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group">
-            <span>About Us</span>
-            <span
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-amber-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-left"></span>
+          <a href="./about.html" class="nav-link text-gray-300 hover:text-amber-400 text-sm font-medium transition-colors duration-300" data-i18n="nav_about">
+            About & Contact
           </a>
         </nav>
 
-        <div class="relative w-full max-w-xs">
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </span>
-            <input id="inputBusca" type="text" placeholder="O que você procura?"
-              class="w-full py-2 pl-10 pr-4 text-sm bg-gray-100 text-black border border-transparent rounded-full focus:outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white focus:border-transparent transition-all duration-300">
+        <!-- Search & Action Buttons -->
+        <div class="flex items-center space-x-3">
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(255,255,255,0.08);" title="Switch theme" aria-label="Switch theme">
+            <i class="fa-solid fa-sun theme-toggle-icon text-amber-400 hover:text-amber-300 transition-colors text-base"></i>
+          </button>
+
+          <!-- Language Dropdown -->
+          <div class="relative hidden md:block">
+            <button id="lang-dropdown-toggle" class="flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-semibold transition-all duration-300 hover:scale-105" style="background: rgba(255,255,255,0.08); color: #d1d5db;">
+              <span id="current-lang-label">🇧🇷 PT</span>
+              <i class="fa-solid fa-chevron-down text-[8px] opacity-60"></i>
+            </button>
+            <div id="lang-dropdown-menu" class="hidden absolute right-0 mt-2 w-32 rounded-xl shadow-2xl border border-amber-900/40 overflow-hidden z-50" style="background: #1a191d;">
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="pt">🇧🇷 Português</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="en">🇺🇸 English</button>
+              <button class="lang-option w-full text-left px-4 py-2.5 text-xs font-medium hover:bg-amber-500/10 transition-colors text-gray-300" data-lang="it">🇮🇹 Italiano</button>
+            </div>
           </div>
-          <ul id="listaProdutos"
-            class="absolute mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-xl z-10 hidden max-h-80 overflow-y-auto">
-          </ul>
+
+          <a href="./about.html#reservation"
+            class="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black shadow-lg shadow-amber-900/20 transition-all duration-300 hover:scale-105" data-i18n="nav_book_table">
+            Book Table
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400 focus:outline-none p-2" aria-label="Toggle menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#161519] border-b border-amber-900/30 px-4 pt-2 pb-6 space-y-3">
+      <a href="../index.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_home">Home</a>
+      <a href="./categories.html" class="block text-amber-400 py-2 text-base font-medium" data-i18n="nav_categories">Categories</a>
+      <a href="./products.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_products">Full Menu</a>
+      <a href="./about.html" class="block text-gray-300 hover:text-amber-400 py-2 text-base font-medium" data-i18n="nav_about">About & Contact</a>
+      <div class="flex items-center gap-2 mt-2 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08);">
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="pt">🇧🇷 PT</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="en">🇺🇸 EN</button>
+        <button class="lang-option flex-1 py-2 rounded-lg text-xs font-semibold text-center transition-colors" style="background: rgba(255,255,255,0.05);" data-lang="it">🇮🇹 IT</button>
       </div>
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Page Title -->
-    <div class="text-center mb-16">
-      <h1 class="text-5xl font-playfair font-bold text-gray-900 mb-4" data-aos="fade-up" data-aos-duration="1500"
-        data-aos-anchor-placement="top-bottom">
-        Categories
+  <!-- Hero Section -->
+  <section class="relative pt-36 pb-20 overflow-hidden bg-gradient-to-b from-[#18171c] to-[#0f0f11]">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_center,_var(--tw-gradient-stops))] from-amber-950/20 via-transparent to-transparent pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold mb-3 block">
+        Flavors of Italy
+      </span>
+      <h1 class="text-4xl md:text-6xl font-playfair font-bold text-white mb-6">
+        Explore Our <span class="gold-gradient-text italic font-serif">Categories</span>
       </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+        From centuries-old pasta recipes to slow-cooked ragùs and artisanal Tuscan wines, discover the authentic culinary traditions that define Aglio & Pasta.
+      </p>
     </div>
+  </section>
 
-    <!-- Categories Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12" id="categories">
-      <!-- Row 1 -->
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d946?w=300&h=300&fit=crop&crop=center"
-            alt="Pasta" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Pasta</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=300&fit=crop&crop=center"
-            alt="Pizza" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Pizza</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1567320425453-7c3318169fb4?w=300&h=300&fit=crop&crop=center"
-            alt="Risotto" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Risotto</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=300&fit=crop&crop=center"
-            alt="Desserts" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Desserts</h3>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-purple-100 to-purple-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1541833163993-d0130466d7e0?w=300&h=300&fit=crop&crop=center"
-            alt="Appetizers" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Appetizers</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-indigo-100 to-indigo-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=300&fit=crop&crop=center"
-            alt="Wines" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Wines</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=300&h=300&fit=crop&crop=center"
-            alt="Soup" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Soup</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=300&h=300&fit=crop&crop=center"
-            alt="Seafood" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Seafood</h3>
-      </div>
-
-      <!-- Row 3 -->
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-yellow-100 to-yellow-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1571197119282-7c4d3c69ec0a?w=300&h=300&fit=crop&crop=center"
-            alt="Gnocchi" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Gnocchi</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-pink-100 to-pink-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1586999768151-6d4c4f2ff55a?w=300&h=300&fit=crop&crop=center"
-            alt="Antipasti" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Antipasti</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-gray-100 to-gray-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=300&h=300&fit=crop&crop=center"
-            alt="Lasagna" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Lasagna</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-green-100 to-green-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?w=300&h=300&fit=crop&crop=center"
-            alt="Salad" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Salad</h3>
-      </div>
-
-      <!-- Row 4 -->
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-orange-100 to-orange-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300&h=300&fit=crop&crop=center"
-            alt="Bruschetta" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Bruschetta</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-blue-100 to-blue-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=300&h=300&fit=crop&crop=center"
-            alt="Gelato" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Gelato</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div
-          class="category-image mb-4 bg-gradient-to-br from-yellow-100 to-orange-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=300&h=300&fit=crop&crop=center"
-            alt="Polenta" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Polenta</h3>
-      </div>
-
-      <div class="category-card flex flex-col items-center text-center cursor-pointer">
-        <div class="category-image mb-4 bg-gradient-to-br from-red-100 to-red-50 flex items-center justify-center">
-          <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=300&h=300&fit=crop&crop=center"
-            alt="Focaccia" class="category-image" />
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">Focaccia</h3>
+  <!-- Categories Grid Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-28 flex-grow">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="categories">
+      <!-- Dynamic Categories injected by categories.js -->
+      <div class="col-span-full text-center py-12 text-gray-500">
+        <i class="fa-solid fa-spinner fa-spin text-2xl text-amber-500 mb-3 block"></i>
+        Loading Categories...
       </div>
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t border-gray-200 mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- Company Info -->
-        <div class="col-span-1 md:col-span-2">
-          <h3 class="text-2xl font-playfair font-bold text-gray-900 italic mb-4">
-            Aglio & Pasta
-          </h3>
-          <p class="text-gray-600 text-sm leading-relaxed max-w-md">
-            "La cucina italiana non è solo cibo, è un modo di vivere. Ogni
-            piatto racconta una storia, ogni ricetta è una tradizione che
-            passa di generazione in generazione."
+  <footer class="bg-[#09080a] border-t border-amber-900/30 text-gray-400 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-3 mb-4">
+            <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-black">
+              <i class="fa-solid fa-utensils text-sm"></i>
+            </div>
+            <span class="font-playfair text-2xl font-bold text-white">Aglio & Pasta</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md font-cormorant italic text-lg">
+            "La cucina italiana non è solo cibo, è un modo di vivere. Ogni piatto racconta una storia di passione e tradizione."
           </p>
         </div>
 
-        <!-- Aglio & Pasta Links -->
         <div>
-          <h4 class="text-sm font-semibold text-gray-900 mb-4">
-            Aglio & Pasta
-          </h4>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_explore">Quick Links</h4>
           <ul class="space-y-2 text-sm">
-            <li>
-              <a href="../index.html" class="text-gray-600 hover:text-gray-900">Homepage</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Categories</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Products</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">About Us</a>
-            </li>
+            <li><a href="../index.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_home">Home</a></li>
+            <li><a href="./categories.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_categories">Categories</a></li>
+            <li><a href="./products.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_products">Full Menu</a></li>
+            <li><a href="./about.html" class="hover:text-amber-400 transition-colors" data-i18n="nav_about">About Us & Reservations</a></li>
           </ul>
         </div>
 
-        <!-- Legal Links -->
         <div>
-          <h4 class="text-sm font-semibold text-gray-900 mb-4">Legal</h4>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Terms</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Conditions</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Cookies</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-gray-900">Copyright</a>
-            </li>
+          <h4 class="text-xs uppercase tracking-wider text-amber-400 font-semibold mb-4" data-i18n="footer_opening_hours">Opening Hours</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Mon - Thu: 12:00 - 22:30</li>
+            <li>Fri - Sat: 12:00 - 23:30</li>
+            <li>Sunday: 12:00 - 21:30</li>
           </ul>
         </div>
       </div>
 
-      <!-- Bottom Footer -->
-      <div class="border-t border-gray-200 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm">
-          © 2020 Aglio & Pasta - All rights reserved
-        </p>
-
-        <!-- Social Media -->
-        <div class="flex space-x-4 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-gray-600">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-gray-600">
-            <i class="fa-brands fa-pinterest"></i>
-          </a>
-          <a href="#" class="text-gray-400 hover:text-gray-600">
-            <i class="fa-brands fa-youtube"></i>
-          </a>
+      <div class="border-t border-amber-900/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p data-i18n="footer_copyright">© 2026 Aglio & Pasta. All rights reserved. Crafted with Italian Passion.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-instagram text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-facebook text-base"></i></a>
+          <a href="#" class="hover:text-amber-400 transition-colors"><i class="fa-brands fa-x-twitter text-base"></i></a>
         </div>
       </div>
     </div>
   </footer>
-  <script src="../src/main.js" type="module"></script>
 </body>
 
 </html>
